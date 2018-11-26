@@ -1,0 +1,58 @@
+/* {padding:0; margin:0;}
+*/	
+img.flexible {
+	float:right;
+	display: inline-flex;
+	padding:20px;
+	max-width:300px; /* actual size of image */
+	width:33%; /* approximate size taken on screen in maximum view */
+}
+
+nav{
+	text-align:center; /* centers the nav */
+}
+
+nav ul {
+		list-style:none; /* removes the bullets */
+	}
+	
+nav ul li
+	{
+		display:inline-block; /* makes horizontal, but able to declare margins */
+		margin:0 1%; /* margin left-right, gets smaller as necessary */
+	}
+	
+nav a:hover{
+	text-decoration: none;
+}
+
+ul.eventlist {
+    list-style-type: circle;
+    width:100%;
+    text-align: center; 
+}
+
+li.eventlist1 {
+		display:inline-block; /* makes horizontal, but able to declare margins */
+		margin:0px 3%; /* margin left-right, gets smaller as necessary */
+        width:1%;
+    text-align: center; 
+}
+li.eventlist2 {
+		display:inline-block; /* makes horizontal, but able to declare margins */
+		margin:0px 3%; /* margin left-right, gets smaller as necessary */
+        width:20%;
+    text-align: center; 
+}
+li.eventlist3 {
+		display:inline-block; /* makes horizontal, but able to declare margins */
+		margin:0px 3%; /* margin left-right, gets smaller as necessary */
+        width:15%;
+    text-align: center; 
+}
+li.eventlist4 {
+		display:inline-block; /* makes horizontal, but able to declare margins */
+		margin:0px 3%; /* margin left-right, gets smaller as necessary */
+        width:15%;
+    text-align: center; 
+}
