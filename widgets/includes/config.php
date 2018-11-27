@@ -34,13 +34,34 @@ $config->nav1['travel.php']= 'Travel Inquiry';
 $config->nav1['contact.php']= 'General Inquiry';
 $config->nav1['template.php']= 'Template';
 $config->nav1['db_test.php']= 'DB Template';
+//echo var_dump($config->nav1);
+//die();
+//set-up heros
+//include 'config-widgets.php'; //low priority - also need to uncomment header.php line 63
+/*    $config->heros[] = '<img src="images/coulson.png" />';
+    $config->heros[] = '<img src="images/fury.png" />';
+    $config->heros[] = '<img src="images/hulk.png" />';
+    $config->heros[] = '<img src="images/thor.png" />';
+    $config->heros[] = '<img src="images/black-widow.png" />';
+    $config->heros[] = '<img src="images/captain-america.png" />';
+    $config->heros[] = '<img src="images/machine.png" />';
+    $config->heros[] = '<img src="images/iron-man.png" />';
+    $config->heros[] = '<img src="images/loki.png" />';
+    $config->heros[] = '<img src="images/giant.png" />';
+    $config->heros[] = '<img src="images/hawkeye.png" />'; */
+//echo var_dump($heros);
+//die();
+
+
+//set-up planets
+//    include 'includes/planets.php';
 
 //create default page identifier
 define('THIS_PAGE',basename($_SERVER['PHP_SELF']));
 include 'config-page-switch.php'; //get page variables
 //START NEW THEME STUFF - be sure to add trailing slash!
 $sub_folder = 'widgets/';//change to 'widgets' or 'sprockets' etc.
-$config->theme = 'Clean';//sub folder to themes values "Brick" or "Clean"
+$config->theme = 'Brick';//sub folder to themes values "Brick" or "Clean"
 
 //will add sub-folder if not loaded to root:
 $config->physical_path = $_SERVER["DOCUMENT_ROOT"] . '/' . $sub_folder;
@@ -89,31 +110,35 @@ if(startSession() && isset($_SESSION['AdminID']))
     ';
 }
 
-//include 'config-widgets.php'; low priority - also need to uncomment header.php line 63
+/*
+function to create navigation from 
+as associative array
 
-
-
-//makelinks() will create navigation from an assoc array
-// echo makeLinks($nav1); 
-function makelinks($nav) 
-{
+*/
+function bc_links($nav1){
+    
+    global $config;
     $myReturn = '';
-        foreach($nav as $key => $value){
-            
-            if(THIS_PAGE==$key)
-            {//current page add active class
-                $myReturn .= ' 
-                <li class="nav-item">
-                    <a class="nav-link active" href="'. $key . '">' . $value . '</a>
-                </li>';  
-                
-            }else{//add no formating
-                $myReturn .= ' 
-                <li class="nav-item">
-                    <a class="nav-link" href="' . $key . '">' . $value . '</a>
-                </li>';               
-            }
-    } 
+    foreach($nav1 as $url => $text){
+        
+        $url = $config->virtual_path . $url; //add virtual path
+        if(THIS_PAGE == $url)
+        {//current page - add highlight
+              $myReturn .= '
+            <li class="nav-item active px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
+            </li>
+            '; 
+        }else{//no highlight
+             $myReturn .= '
+            <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
+            </li>
+            '; 
+        }
+    }
+    
     return $myReturn;
-}//end makeLinks()
+
+}//end bc_links()
 ?>

@@ -36,7 +36,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav mx-auto">
-                <?=bc_links($config->nav1)?>
+                <?=bc_links($config->nav1);?>
             </ul>
         </div>
       </div>
@@ -53,9 +53,9 @@
               <span class="meta"><?=$config->slogan?></span>  
                 <?php /*
                     if ($config->randomSH=="y") {
-                        echo randomize($heros);
+                        echo randomize($config->heros);
                     }else if ($config->rotatePlanets=="y") {
-                        echo rotate($planets);
+                        echo rotate($config->planets);
                     } */
                 ?>
                 <br />
