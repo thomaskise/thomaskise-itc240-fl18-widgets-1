@@ -1,15 +1,13 @@
 <?php
 //config-page-switch.php assings page specific values to variables for rendering on the page
 switch(THIS_PAGE){
-   case 'template.php':    
-        $config->title = 'Template Page';    
-    break;    
-          case "index.php":
-            $config->pageHeader="Wild Duck Coffee";
+ 
+    case "index.php":
+            $config->pageHeader="Coffee at its best";
             $config->slogan="An adventure in caffinated experience";
-            $config->Title="Wild Duck Home";
-            $config->pageImage="img/wildDuckLogo.jpg";
-            $config->className="site-heading";
+            $config->title="Wild Duck Home";
+            $config->pageImage="images/wildDuckLogo.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="";
             $config->rotatePlanets="";
@@ -18,19 +16,19 @@ switch(THIS_PAGE){
         case "about.php":
             $config->pageHeader="About Wild Duck Coffee";
             $config->slogan="This is what we do.";
-            $config->Title="About Wild Duck";
-            $config->pageImage="img/about-bg.jpg";
-            $config->className="page-heading";
+            $config->title="About Wild Duck";
+            $config->pageImage="images/about-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="";
             $config->rotatePlanets="";
             break;
         case "engagement_list.php":
             $config->pageHeader="We are here to tell the coffee story!";
-            $config->slogan=" Here is the list of our followers!";
-            $config->Title="Engagements";
-            $config->pageImage="img/post-bg.jpg";
-            $config->className="post-heading";
+            $config->slogan="Here is the list of our followers!";
+            $config->title="Engagements";
+            $config->pageImage="images/post-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="y";
             $config->rotatePlanets="";
@@ -38,9 +36,9 @@ switch(THIS_PAGE){
         case "engagement_view.php":
             $config->pageHeader="A coffee story telling engagement!";
             $config->slogan=" Here are details ...";
-            $config->Title="Engagement Detail";
-            $config->pageImage="img/post-bg.jpg";
-            $config->className="post-heading";
+            $config->title="Engagement Detail";
+            $config->pageImage="images/post-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="";
             $config->rotatePlanets="y";
@@ -48,19 +46,19 @@ switch(THIS_PAGE){
         case "post.php":
             $config->pageHeader="Man must explore, and this is exploration at its greatest";
             $config->slogan=" Coffee to the max expands all horizons!";
-            $config->Title="The Coffee Blog";
-            $config->pageImage="img/post-bg.jpg";
-            $config->className="post-heading";
+            $config->title="The Coffee Blog";
+            $config->pageImage="images/post-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="";
             $config->rotatePlanets="";
             break;
         case "dailyspecials.php":
-            $config->pageHeader="No one said life would be easy. If we work hard, it IS rewarding";
+            $config->pageHeader="Good coffee is what life's about.";
             $config->slogan=" Take time to enjoy and treat yourself!";
-            $config->Title="Daily Specials";
-            $config->pageImage="img/specials-bg.jpg";
-            $config->className="post-heading";
+            $config->title="Daily Specials";
+            $config->pageImage="images/specials-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="";
             $config->rotatePlanets="";
@@ -68,9 +66,9 @@ switch(THIS_PAGE){
         case "travel.php":
             $config->pageHeader="Fabulous Adventures";
             $config->slogan="Exotic Coffee Lands";
-            $config->Title="Travel Inquiries";
-            $config->pageImage="img/travel.jpg";
-            $config->className="page-heading";
+            $config->title="Travel Inquiries";
+            $config->pageImage="images/travel.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="";
             $config->rotatePlanets="";
@@ -78,19 +76,19 @@ switch(THIS_PAGE){
         case "contact.php":
             $config->pageHeader="Contact the Duck";
             $config->slogan="Have questions? I have answers.";
-            $config->Title="Contact Wild Duck";
-            $config->pageImage="img/contact-bg.jpg";
-            $config->className="page-heading";
+            $config->title="Contact Wild Duck";
+            $config->pageImage="images/contact-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="";
             $config->randomSH="";
             $config->rotatePlanets="";
             break;
         case "template.php":
-            $config->pageHeader="Wild Duck Coffee Template";
+            $config->pageHeader="Wild Duck Coffee Template";    
             $config->slogan="Make it what it needs to be.";
             $config->Title="Template Only";
-            $config->pageImage="img/contact-bg.jpg";
-            $config->className="page-heading";
+            $config->pageImage="images/contact-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="Go for it!";
             $config->randomSH="";
             $config->rotatePlanets="";
@@ -98,9 +96,9 @@ switch(THIS_PAGE){
         case "db_test.php":
             $config->pageHeader="Database Test Page";
             $config->slogan="Use this page for testing the db";
-            $config->Title="Template Only";
-            $config->pageImage="img/contact-bg.jpg";
-            $config->className="page-heading";
+            $config->title="Template Only";
+            $config->pageImage="images/contact-bg.jpg";
+            $config->className="bg-faded-contrast";
             $config->subHeader="Go for it!";
             $config->randomSH="";
             $config->rotatePlanets="";
@@ -109,7 +107,7 @@ switch(THIS_PAGE){
         default:
             $config->pageHeader="";
             $config->slogan="";
-            $config->Title="";
+            $config->title="";
             $config->pageImage="";
             $config->className="";
             $config->subHeader="";

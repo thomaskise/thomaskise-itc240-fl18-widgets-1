@@ -28,19 +28,19 @@ $config = new stdClass;
 
 //CHANGE TO MATCH YOUR PAGES
 $config->nav1['index.php'] = "Home";
-$config->nav1['about.php']= 'About';
 $config->nav1['engagement_list.php']= 'Engagements';
 $config->nav1['dailyspecials.php']= 'Daily Specials';
 $config->nav1['travel.php']= 'Travel Inquiry';
 $config->nav1['contact.php']= 'General Inquiry';
+$config->nav1['template.php']= 'Template';
 $config->nav1['db_test.php']= 'DB Template';
 
 //create default page identifier
 define('THIS_PAGE',basename($_SERVER['PHP_SELF']));
-
+include 'config-page-switch.php'; //get page variables
 //START NEW THEME STUFF - be sure to add trailing slash!
 $sub_folder = 'widgets/';//change to 'widgets' or 'sprockets' etc.
-$config->theme = 'Brick';//sub folder to themes
+$config->theme = 'Clean';//sub folder to themes values "Brick" or "Clean"
 
 //will add sub-folder if not loaded to root:
 $config->physical_path = $_SERVER["DOCUMENT_ROOT"] . '/' . $sub_folder;
@@ -59,7 +59,6 @@ define('INCLUDE_PATH', $config->physical_path . 'includes/');
 
 
 //CHANGE ITEMS BELOW TO MATCH YOUR SHORT TAGS
-$config->title = THIS_PAGE;
 $config->banner = 'Widgets';
 $config->loadhead = '';//place items in <head> element
 $config->siteName = "Wild Duck Coffee";
@@ -90,7 +89,9 @@ if(startSession() && isset($_SESSION['AdminID']))
     ';
 }
 
-include 'config-page-switch.php';
+//include 'config-widgets.php'; low priority - also need to uncomment header.php line 63
+
+
 
 //makelinks() will create navigation from an assoc array
 // echo makeLinks($nav1); 
