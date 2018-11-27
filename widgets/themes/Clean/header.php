@@ -38,9 +38,9 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-              <?bc_links($config->nav1);?>
-          </ul>
+            <ul class="navbar-nav mx-auto">
+                <?=bc_links($config->nav1)?>
+            </ul>
         </div>
       </div>
     </nav>
@@ -48,6 +48,7 @@
     <!-- Page Header -->
     <header class="masthead" style="background-image: url(<?=$config->pageImage?>)">
       <div class="overlay">
+      </div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
@@ -55,14 +56,6 @@
               <h1><?=$config->pageHeader?></h1>
               <span class="subheading"><?=$config->subHeader?></span>
               <span class="meta"><?=$config->slogan?></span>  
-                <?php /*
-                    if ($config->randomSH=="y") {
-                        echo randomize($config->heros);
-                    }else if ($config->rotatePlanets=="y") {
-                        echo rotate($config->planets);
-                    }*/
-                ?>
-            </div>
             </div>
           </div>
         </div>
@@ -75,36 +68,3 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <?=showFeedback();?>
           <!-- header ends here -->
-<?php
-/*
-function to create navigation from 
-as associative array
-
-*/
-function bc_links($nav1){
-    
-    global $config;
-    $myReturn = '';
-    foreach($nav1 as $url => $text){
-        
-        $url = $config->virtual_path . $url; //add virtual path
-        if(THIS_PAGE == $url)
-        {//current page - add highlight
-              $myReturn .= '
-            <li class="nav-item active px-lg-4">
-                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
-            </li>
-            '; 
-        }else{//no highlight
-             $myReturn .= '
-            <li class="nav-item px-lg-4">
-                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
-            </li>
-            '; 
-        }
-    }
-    
-    return $myReturn;
-
-}//end bc_links()
-?>

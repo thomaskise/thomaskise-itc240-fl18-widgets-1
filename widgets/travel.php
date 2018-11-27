@@ -68,7 +68,7 @@
                         </div>
                         <div class="control-group">
                           <div class="form-group floating-label-form-group controls">
-                            <label>How else can we help you?</label>
+                            <label>How else may we help you?</label>
                             <textarea rows="5" class="form-control" placeholder="How else can we help you?" id="message" name="Message" data-validation-required-message="Please enter a message."></textarea>
                             <p class="help-block text-danger"></p>
                           </div>

@@ -1,5 +1,7 @@
 <!-- footer starts here -->
     </div>
+    </div>
+    </div>
 
     <hr>
 
@@ -34,18 +36,18 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+            <p class="copyright text-muted">Copyright &copy; Your Website 2018 <?=$config->adminWidget;?></p>
           </div>
         </div>
       </div>
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=$config->theme_virtual?>vendor/jquery/jquery.min.js"></script>
+    <script src="<?=$config->theme_virtual?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
+    <script src="<?=$config->theme_virtual?>js/clean-blog.min.js"></script>
 
   </body>
 
