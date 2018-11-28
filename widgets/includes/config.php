@@ -34,34 +34,19 @@ $config->nav1['travel.php']= 'Travel Inquiry';
 $config->nav1['contact.php']= 'General Inquiry';
 $config->nav1['template.php']= 'Template';
 $config->nav1['db_test.php']= 'DB Template';
-//echo var_dump($config->nav1);
-//die();
-//set-up heros
-//include 'config-widgets.php'; //low priority - also need to uncomment header.php line 63
-/*    $config->heros[] = '<img src="images/coulson.png" />';
-    $config->heros[] = '<img src="images/fury.png" />';
-    $config->heros[] = '<img src="images/hulk.png" />';
-    $config->heros[] = '<img src="images/thor.png" />';
-    $config->heros[] = '<img src="images/black-widow.png" />';
-    $config->heros[] = '<img src="images/captain-america.png" />';
-    $config->heros[] = '<img src="images/machine.png" />';
-    $config->heros[] = '<img src="images/iron-man.png" />';
-    $config->heros[] = '<img src="images/loki.png" />';
-    $config->heros[] = '<img src="images/giant.png" />';
-    $config->heros[] = '<img src="images/hawkeye.png" />'; */
-//echo var_dump($heros);
-//die();
 
+//set-up heros
+    include 'includes/heros.php';
 
 //set-up planets
-//    include 'includes/planets.php';
+    include 'includes/planets.php';
 
 //create default page identifier
 define('THIS_PAGE',basename($_SERVER['PHP_SELF']));
 include 'config-page-switch.php'; //get page variables
 //START NEW THEME STUFF - be sure to add trailing slash!
 $sub_folder = 'widgets/';//change to 'widgets' or 'sprockets' etc.
-$config->theme = 'Brick';//sub folder to themes values "Brick" or "Clean"
+$config->theme = 'Clean';//sub folder to themes values "Brick" or "Clean"
 
 //will add sub-folder if not loaded to root:
 $config->physical_path = $_SERVER["DOCUMENT_ROOT"] . '/' . $sub_folder;
@@ -125,8 +110,8 @@ function bc_links($nav1){
         if(THIS_PAGE == $url)
         {//current page - add highlight
               $myReturn .= '
-            <li class="nav-item active px-lg-4">
-                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
+            <li class="nav-item px-lg-4">
+                <a class="nav-link active text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
             </li>
             '; 
         }else{//no highlight

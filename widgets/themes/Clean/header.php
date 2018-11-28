@@ -55,6 +55,13 @@
               <h1><?=$config->pageHeader?></h1>
               <span class="subheading"><?=$config->subHeader?></span>
               <span class="meta"><?=$config->slogan?></span> 
+              <?php
+                if ($config->randomSH=="y") {
+                    echo randomize($config->heros);
+                }else if ($config->rotatePlanets=="y") {
+                    echo rotate($config->planets);
+                }
+              ?>
             </div>
           </div>
         </div>

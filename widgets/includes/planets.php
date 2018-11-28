@@ -1,20 +1,20 @@
 <?php
 //planets.php
-//loads an array named $planets with images and text for daily rotation
+//loads an array named $config->planets with images and text for daily rotation
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/mercury.gif" style="float:left; margin:0 10px 10px 0" />Mercury concerns communication and short-distance travel. Language, words, speech.</p>
 <p>
 Through the position of Mercury in your horoscope you can see the areas that will be of most interest to you and stimulate your mental energies.</p>
 ';
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/venus.gif" style="float:left; margin:0 10px 10px 0" />Venus is the planet of love, beauty, art, aesthetics, value, fairness, socializing and relationships.</p>
 <p>
 The planet Venus astrologically represents the desire to bring together things that compliment each other. There is a strong need to create harmony and balance in the environment and in relationships.</p>
 ';
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/mars.gif" style="float:left; margin:0 10px 10px 0" />Mars represents how we assert ourselves in the world. The warrior archetype. anger, sexuality, war, sports.</p>
 </p>
 <p>
@@ -22,7 +22,7 @@ Through the position of Mars in your horoscope you can see what best motivates s
 </p>
 ';
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/jupiter.gif" style="float:left; margin:0 10px 10px 0" />Jupiter is the planet of expansion. International travel. Faith belief, the religious impulse. Higher education. Law, philosophy, ethics.
 </p>
 <p>
@@ -30,7 +30,7 @@ The position of Jupiter in your horoscope chart describes how you grow and evolv
 </p>
 ';
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/saturn.gif" style="float:left; margin:0 10px 10px 0" />Saturn is the planet of restriction. Boundaries, tests, limitations. Manifestation. Hard work, responsibility.
 </p>
 <p>
@@ -40,7 +40,7 @@ It completes its first trip around the zodiac by the age of thirty and its secon
 </p>
 ';
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/uranus.gif" style="float:left; margin:0 10px 10px 0" />Uranus is the planet of disruption, liberation, sudden changes. Revolution Technology.
 </p>
 <p>
@@ -51,7 +51,7 @@ The changes are radical and cannot as a rule be reversed e.g. personal achieveme
 </p>
 ';
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/neptune.gif" style="float:left; margin:0 10px 10px 0" />This is the planet of transcendence. Illusion, delusion, image, spirituality, mysticism.
 </p>
 <p>
@@ -61,7 +61,7 @@ As an area is touched by Neptune it is best to know how that is affecting you. I
 </p>
 ';
 
-$planets[] = '
+$config->planets[] = '
 <p><img src="images/pluto.gif" style="float:left; margin:0 10px 10px 0" />Pluto is the planet of death and rebirth. The underworld. Taboos. Eroticism and Shadow. Healing and regeneration.</p>
 <p>
 The zodiac sign positions of Pluto are considered to possess great historical significance. Fundamental upheavals and drastic transformations in areas of human life and civilization are expected when Pluto travels through the different signs. Pluto passing through each zodiac sign is always considered to produce a change of a permanent nature.</p>

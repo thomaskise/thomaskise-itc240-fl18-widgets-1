@@ -488,6 +488,7 @@ $x = 0; $y = 0; $sel = "";//init stuff
    }
    return $myReturn;
 }#end returnSelect()
+
 /**
  * returns a random item from an array sent to it.
  *
@@ -507,6 +508,7 @@ $x = 0; $y = 0; $sel = "";//init stuff
  * @see rotate() 
  * @todo none
  */
+
 function randomize ($arr)
 {//randomize function is called in the right sidebar - an example of random (on page reload)
 	if(is_array($arr))
@@ -536,6 +538,7 @@ function randomize ($arr)
  * @see rotate() 
  * @todo none
  */
+
 function rotate ($arr)
 {//rotate function is called in the right sidebar - an example of rotation (on day of month)
 	if(is_array($arr))
@@ -544,4 +547,4 @@ function rotate ($arr)
 	}else{
 		return $arr;
 	}
-}#end rotate
+}#end rotate 

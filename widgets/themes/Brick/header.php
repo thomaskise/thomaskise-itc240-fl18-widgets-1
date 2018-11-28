@@ -19,6 +19,15 @@
 
     <!-- Custom styles for this template -->
     <link href="<?=$config->theme_virtual?>css/business-casual.css" rel="stylesheet">
+    <style>  
+        #mainNav .navbar-nav>li.nav-item>a.active 
+        {
+            color: #ef8c49;
+        }
+        .panel-body {
+            background:#ef8c49;
+        }
+    </style>
     <?=$config->loadhead?>
   </head>
 
@@ -28,7 +37,7 @@
     <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">2802 E Olive St | Seattle, WA 98122 | 206.325.3626</div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4" id="mainNav">
       <div class="container">
         <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,24 +52,22 @@
     </nav>
     <header class="masthead" style="background-image: url(<?=$config->pageImage?>)">
       <div class="overlay">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class=<?=$config->className?>>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="bg-faded-contrast">
                 <br />
                 <h1><?=$config->pageHeader?></h1>
-              <span class="subheading"><?=$config->subHeader?></span>
-              <span class="meta"><?=$config->slogan?></span>  
-              <?php
+                <span class="subheading"><?=$config->subHeader?></span>
+                <span class="meta"><?=$config->slogan?></span>  
+                 <?php
                     if ($config->randomSH=="y") {
-                        echo randomize($heros);
+                        echo randomize($config->heros);
                     }else if ($config->rotatePlanets=="y") {
-                        echo rotate($planets);
+                        echo rotate($config->planets);
                     }
-                ?>
-                <br />
-                <br />
-            </div>
+                 ?>
+               </div>
             </div>
           </div>
         </div>
