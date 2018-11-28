@@ -1,100 +1,178 @@
 <?php
 /*
-config.php
-
-stores configuration information for our web application
-
+    Config.php
+        stores configuration data for our application
 */
-
-//removes header already sent errors
-ob_start();
-
-define('SECURE',false); #force secure, https, for all site pages
-
-define('PREFIX', 'widgets_fl18_'); #Adds uniqueness to your DB table names.  Limits hackability, naming collisions
-
-header("Cache-Control: no-cache");header("Expires: -1");#Helps stop browser & proxy caching
-
-define('DEBUG',true); #we want to see all errors
-
-include 'db_functions/db_credentials.php';//stores database info
-include 'common.php';//stores favorite functions
-
-//prevents date errors
-date_default_timezone_set('America/Los_Angeles');
-
-//create config object
-$config = new stdClass;
-
-//CHANGE TO MATCH YOUR PAGES
-$config->nav1['index.php'] = "Home";
-$config->nav1['engagement_list.php']= 'Engagements';
-$config->nav1['dailyspecials.php']= 'Daily Specials';
-$config->nav1['travel.php']= 'Travel Inquiry';
-$config->nav1['contact.php']= 'General Inquiry';
-$config->nav1['template.php']= 'Template';
-$config->nav1['db_test.php']= 'DB Template';
-
-//create default page identifier
-define('THIS_PAGE',basename($_SERVER['PHP_SELF']));
-include 'config-page-switch.php'; //get page variables
-//START NEW THEME STUFF - be sure to add trailing slash!
-$sub_folder = 'widgets/';//change to 'widgets' or 'sprockets' etc.
-$config->theme = 'Clean';//sub folder to themes values "Brick" or "Clean"
-
-//will add sub-folder if not loaded to root:
-$config->physical_path = $_SERVER["DOCUMENT_ROOT"] . '/' . $sub_folder;
-//force secure website
-if (SECURE && $_SERVER['SERVER_PORT'] != 443) {#force HTTPS
-	header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-}else{
-    //adjust protocol
-    $protocol = (SECURE==true ? 'https://' : 'http://'); // returns true
+ob_start(); //prevents header errors
     
+define('DEBUG',TRUE); #we want to see all errors
+
+//include 'private/db_credentials.php';
+define('THIS_PAGE', basename($_SERVER['PHP_SELF']));//two parms (NAME, value); 
+
+$siteName = "Wild Duck Coffee"; //for future use
+
+//here is the associtive array that defines the main navigation (the urls and page names)
+    $nav1['index.php']= 'Home';
+    $nav1['about.php']= 'About';
+    $nav1['engagement_list.php']= 'Engagements';
+    $nav1['dailyspecials.php']= 'Daily Specials';
+    $nav1['travel.php']= 'Travel Inquiry';
+    $nav1['contact.php']= 'General Inquiry';
+    $nav1['db_test.php']= 'DB Template';
+
+//var_dump($nav1);
+ //   die;
+
+//set-up heros
+    include 'includes/random_rotate.php';
+
+    $heros[] = '<img src="images/coulson.png" />';
+    $heros[] = '<img src="images/fury.png" />';
+    $heros[] = '<img src="images/hulk.png" />';
+    $heros[] = '<img src="images/thor.png" />';
+    $heros[] = '<img src="images/black-widow.png" />';
+    $heros[] = '<img src="images/captain-america.png" />';
+    $heros[] = '<img src="images/machine.png" />';
+    $heros[] = '<img src="images/iron-man.png" />';
+    $heros[] = '<img src="images/loki.png" />';
+    $heros[] = '<img src="images/giant.png" />';
+    $heros[] = '<img src="images/hawkeye.png" />';
+
+//set-up planets
+    include 'includes/planets.php';
+
+    switch (THIS_PAGE) {
+        case "index.php":
+            $pageHeader="Wild Duck Coffee";
+            $slogan="An adventure in caffinated experience";
+            $Title="Wild Duck Home";
+            $pageImage="img/wildDuckLogo.jpg";
+            $className="site-heading";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="";
+            break;
+            
+        case "about.php":
+            $pageHeader="About Wild Duck Coffee";
+            $slogan="This is what we do.";
+            $Title="About Wild Duck";
+            $pageImage="img/about-bg.jpg";
+            $className="page-heading";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="";
+            break;
+        case "engagement_list.php":
+            $pageHeader="We are here to tell the coffee story!";
+            $slogan=" Here is the list of our followers!";
+            $Title="Engagements";
+            $pageImage="img/post-bg.jpg";
+            $className="post-heading";
+            $subHeader="";
+            $randomSH="y";
+            $rotatePlanets="";
+            break;
+        case "engagement_view.php":
+            $pageHeader="A coffee story telling engagement!";
+            $slogan=" Here are details ...";
+            $Title="Engagement Detail";
+            $pageImage="img/post-bg.jpg";
+            $className="post-heading";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="y";
+            break;
+        case "post.php":
+            $pageHeader="Man must explore, and this is exploration at its greatest";
+            $slogan=" Coffee to the max expands all horizons!";
+            $Title="The Coffee Blog";
+            $pageImage="img/post-bg.jpg";
+            $className="post-heading";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="";
+            break;
+        case "dailyspecials.php":
+            $pageHeader="No one said life would be easy. If we work hard, it IS rewarding";
+            $slogan=" Take time to enjoy and treat yourself!";
+            $Title="Daily Specials";
+            $pageImage="img/specials-bg.jpg";
+            $className="post-heading";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="";
+            break;       
+        case "travel.php":
+            $pageHeader="Fabulous Adventures";
+            $slogan="Exotic Coffee Lands";
+            $Title="Travel Inquiries";
+            $pageImage="img/travel.jpg";
+            $className="page-heading";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="";
+            break;
+        case "contact.php":
+            $pageHeader="Contact the Duck";
+            $slogan="Have questions? I have answers.";
+            $Title="Contact Wild Duck";
+            $pageImage="img/contact-bg.jpg";
+            $className="page-heading";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="";
+            break;
+        case "template.php":
+            $pageHeader="Wild Duck Coffee Template";
+            $slogan="Make it what it needs to be.";
+            $Title="Template Only";
+            $pageImage="img/contact-bg.jpg";
+            $className="page-heading";
+            $subHeader="Go for it!";
+            $randomSH="";
+            $rotatePlanets="";
+            break;
+        case "db_test.php":
+            $pageHeader="Database Test Page";
+            $slogan="Use this page for testing the db";
+            $Title="Template Only";
+            $pageImage="img/contact-bg.jpg";
+            $className="page-heading";
+            $subHeader="Go for it!";
+            $randomSH="";
+            $rotatePlanets="";
+            break;
+            
+        default:
+            $pageHeader="";
+            $slogan="";
+            $Title="";
+            $pageImage="";
+            $className="";
+            $subHeader="";
+            $randomSH="";
+            $rotatePlanets="";
+    }
+
+
+function myerror($myFile, $myLine, $errorMsg)
+{
+    if(defined('DEBUG') && DEBUG)
+    {
+       echo "Error in file: <b>" . $myFile . "</b> on line: <b>" . $myLine . "</b><br />";
+       echo "Error Message: <b>" . $errorMsg . "</b><br />";
+       die();
+    }else{
+		echo "I'm sorry, we have encountered an error.  Would you like to buy some socks?";
+		die();
+    }
 }
-$config->virtual_path = $protocol . $_SERVER["HTTP_HOST"] . '/' . $sub_folder;
-
-define('ADMIN_PATH', $config->virtual_path . 'admin/'); # Could change to sub folder
-define('INCLUDE_PATH', $config->physical_path . 'includes/');
-
-
-//CHANGE ITEMS BELOW TO MATCH YOUR SHORT TAGS
-$config->banner = 'Widgets';
-$config->loadhead = '';//place items in <head> element
-$config->siteName = "Wild Duck Coffee";
-
-
-//creates theme virtual path for theme assets, JS, CSS, images
-$config->theme_virtual = $config->virtual_path . 'themes/' . $config->theme . '/';
-
-/*
- * adminWidget allows clients to get to admin page from anywhere
- * code will show/hide based on logged in status
-*/
-/*
- * adminWidget allows clients to get to admin page from anywhere
- * code will show/hide based on logged in status
-*/
-if(startSession() && isset($_SESSION['AdminID']))
-{#add admin logged in info to sidebar or nav
-    
-    $config->adminWidget = '
-        <a href="' . ADMIN_PATH . 'admin_dashboard.php">ADMIN</a> 
-        <a href="' . ADMIN_PATH . 'admin_logout.php">LOGOUT</a>
-    ';
-}else{//show login (YOU MAY WANT TO SET TO EMPTY STRING FOR SECURITY)
-    
-    $config->adminWidget = '
-        <a  href="' . ADMIN_PATH . 'admin_login.php">LOGIN</a>
-    ';
-}
-
-//include 'config-widgets.php'; low priority - also need to uncomment header.php line 63
-
-
 
 //makelinks() will create navigation from an assoc array
 // echo makeLinks($nav1); 
+
 function makelinks($nav) 
 {
     $myReturn = '';
@@ -116,4 +194,7 @@ function makelinks($nav)
     } 
     return $myReturn;
 }//end makeLinks()
+
+
+
 ?>

@@ -1,6 +1,6 @@
 <!-- footer starts here -->
-    </div>
-    </div>
+            </div>
+        </div>
     </div>
 
     <hr>

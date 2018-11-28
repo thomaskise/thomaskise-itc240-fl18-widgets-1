@@ -51,12 +51,12 @@
                 <h1><?=$config->pageHeader?></h1>
               <span class="subheading"><?=$config->subHeader?></span>
               <span class="meta"><?=$config->slogan?></span>  
-                <?php /*
+              <?php
                     if ($config->randomSH=="y") {
-                        echo randomize($config->heros);
+                        echo randomize($heros);
                     }else if ($config->rotatePlanets=="y") {
-                        echo rotate($config->planets);
-                    } */
+                        echo rotate($planets);
+                    }
                 ?>
                 <br />
                 <br />

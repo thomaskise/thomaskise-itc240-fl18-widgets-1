@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<?=$config->theme_virtual?>css/clean-blog.min.css" rel="stylesheet">
-    <link href="<?=$config->theme_virtual?>css/wildduck.css" rel="stylesheet">
+    <link href="<?=$config->theme_virtual?>css/clean-blog.css" rel="stylesheet">
     <style>  
         #mainNav .navbar-nav>li.nav-item>a.active 
         {
@@ -38,7 +38,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav ml-auto">
                 <?=bc_links($config->nav1)?>
             </ul>
         </div>
@@ -46,16 +46,15 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url(<?=$config->pageImage?>)">
-      <div class="overlay">
-      </div>
+    <header class="masthead" style="background-image: url('<?=$config->theme_virtual?>img/<?=$config->pageImage?>')">
+      <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <div class=<?=$config->className?>>
+            <div class=page-heading>
               <h1><?=$config->pageHeader?></h1>
               <span class="subheading"><?=$config->subHeader?></span>
-              <span class="meta"><?=$config->slogan?></span>  
+              <span class="meta"><?=$config->slogan?></span> 
             </div>
           </div>
         </div>
