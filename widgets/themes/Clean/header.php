@@ -29,6 +29,7 @@
             background:#ef8c49;
         }
     </style>
+
     <?=$config->loadhead?>
   </head>
 
@@ -39,7 +40,7 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <?=bc_links($config->nav1)?>
+                <?=makeLinks($config->nav1)?>
             </ul>
         </div>
       </div>

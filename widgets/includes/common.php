@@ -547,4 +547,62 @@ function rotate ($arr)
 	}else{
 		return $arr;
 	}
-}#end rotate 
+}#end rotate
+//makelinks() will create navigation from an assoc array - currently in Clean Theme only
+// echo makeLinks($nav1); 
+
+function makeLinks($nav1) 
+{
+        global $config;
+        $myReturn = '';
+        foreach($nav1 as $key => $value){
+            
+            $key = $config->virtual_path . $key; //add virtual path
+            if(THIS_PAGE==$key)
+            {//current page add active class
+                $myReturn .= ' 
+                <li class="nav-item">
+                    <a class="nav-link active" href="'. $key . '">' . $value . '</a>
+                </li>';  
+                
+            }else{//add no formating
+                $myReturn .= ' 
+                <li class="nav-item">
+                    <a class="nav-link" href="' . $key . '">' . $value . '</a>
+                </li>';               
+            }
+    } 
+    return $myReturn;
+}//end makeLinks()
+
+/*
+function to create navigation from 
+as associative array - currently used in Bricks Theme only
+
+*/
+function bc_links($nav1){
+    
+    global $config;
+    $myReturn = '';
+    foreach($nav1 as $url => $text){
+        
+        $url = $config->virtual_path . $url; //add virtual path
+        if(THIS_PAGE == $url)
+        {//current page - add highlight
+              $myReturn .= '
+            <li class="nav-item active px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
+            </li>
+            '; 
+        }else{//no highlight
+             $myReturn .= '
+            <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
+            </li>
+            '; 
+        }
+    }
+    
+    return $myReturn;
+
+}//end bc_links()

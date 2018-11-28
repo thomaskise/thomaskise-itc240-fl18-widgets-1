@@ -94,36 +94,4 @@ if(startSession() && isset($_SESSION['AdminID']))
         <a  href="' . ADMIN_PATH . 'admin_login.php">LOGIN</a>
     ';
 }
-
-/*
-function to create navigation from 
-as associative array
-
-*/
-function bc_links($nav1){
-    
-    global $config;
-    $myReturn = '';
-    foreach($nav1 as $url => $text){
-        
-        $url = $config->virtual_path . $url; //add virtual path
-        if(THIS_PAGE == $url)
-        {//current page - add highlight
-              $myReturn .= '
-            <li class="nav-item px-lg-4">
-                <a class="nav-link active text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
-            </li>
-            '; 
-        }else{//no highlight
-             $myReturn .= '
-            <li class="nav-item px-lg-4">
-                <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
-            </li>
-            '; 
-        }
-    }
-    
-    return $myReturn;
-
-}//end bc_links()
 ?>

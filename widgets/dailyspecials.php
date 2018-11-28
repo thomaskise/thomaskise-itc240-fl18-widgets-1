@@ -3,7 +3,7 @@
 <?php include 'includes/dayswitch.php'?>
     
         <h2 class="post-title">Checkout our daily specials:</h2>
-		<nav>
+		<nav id=specialsNav>
 			<ul>
                 <li><a href="dailyspecials.php?day=Sunday">Sunday</a></li>
                 <li><a href="dailyspecials.php?day=Monday">Monday</a></li>
