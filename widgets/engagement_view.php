@@ -67,7 +67,7 @@ if($Feedback == '')
     echo $Feedback;
 }    
 
-echo '<p><a href="engagement_list.php">Go Back</a></p>';
+    echo '<p><a href="engagement_list.php">Go Back</a></p>';
 
 //release web server resources
 @mysqli_free_result($result);
