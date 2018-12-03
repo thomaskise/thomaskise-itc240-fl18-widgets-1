@@ -29,7 +29,6 @@ $config = new stdClass;
 //CHANGE TO MATCH YOUR PAGES
 $config->nav1['index.php'] = "Home";
 $config->nav1['engagement_list.php']= 'Engagements';
-$config->nav1['engagement_list_alpha.php']= 'Engagements Alpha';
 $config->nav1['dailyspecials.php']= 'Daily Specials';
 $config->nav1['travel.php']= 'Travel Inquiry';
 $config->nav1['contact.php']= 'General Inquiry';
