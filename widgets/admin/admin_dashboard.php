@@ -51,6 +51,9 @@ get_header(); #header must appear before any HTML is printed by PHP
 	<tr>
         <td align="center" colspan="2"><b><?=$_SESSION['FirstName']?></b> is currently logged in as <b><?=$_SESSION['Privilege']?></b> <a href="<?=ADMIN_PATH?>admin_logout.php" title="Don't forget to Logout!">Logout</a></td>
 	</tr>
+    <tr>
+        <td align="center" colspan="2"><b><a href="<?=ADMIN_PATH?>engagement_dashboard.php">Toggle to the Engagement Dashboard</a></b></td>
+	</tr>
 </table>
 <?php
 get_footer();
