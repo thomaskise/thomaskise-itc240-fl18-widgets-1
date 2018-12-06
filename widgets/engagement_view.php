@@ -10,8 +10,18 @@ if(isset($_GET['id']))
     header('Location:engagement_list.php');
 }
 
+//for this page we'll request no caching to see the latest image
+if(isset($_SESSION["AdminID"]))
+{//don't cache uploaded images
+    $config->loadhead .='
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    ';
+    
+}
 
-$sql = "select * from engagements where EngagementID = $id";
+$sql = "select * from " . PREFIX . "engagements where EngagementID = $id";
 
 //we extract the data here
 $result = mysqli_query($iConn,$sql);
@@ -60,12 +70,32 @@ if($Feedback == '')
     echo 'Preferred training date: <b>' . $PreferredTrainingDate . '</b>' . '<br />';
     echo 'Trainer: <b>' . $Trainer . '</b>' . '<br />' . '<br />';
     
-    echo '<img src="uploads/engagement' . $id . '.png" />';
+    echo '<img src="uploads/engagement' . $id . '.jpg" />';
     
     echo '</p>'; 
 }else{//warn user no data
     echo $Feedback;
 }    
+
+if(startSession() && isset($_SESSION["AdminID"]))
+    {# only admins can see 'peek a boo' link:
+        echo '<p align="center"><a href="' . $config->virtual_path . '/upload_form.php?' . $_SERVER['QUERY_STRING'] . '">UPLOAD IMAGE</a></p>';
+        /*
+        # if you wish to overwrite any of these options on the view page, 
+        # you may uncomment this area, and provide different parameters:						
+        echo '<div align="center"><a href="' . VIRTUAL_PATH . 'upload_form.php?' . $_SERVER['QUERY_STRING']; 
+        echo '&imagePrefix=customer';
+        echo '&uploadFolder=upload/';
+        echo '&extension=.jpg';
+        echo '&createThumb=TRUE';
+        echo '&thumbWidth=50';
+        echo '&thumbSuffix=_thumb';
+        echo '&sizeBytes=100000';
+        echo '">UPLOAD IMAGE</a></div>';
+        */						
+
+    }
+
 
     echo '<p><a href="engagement_list.php">Go Back</a></p>';
 

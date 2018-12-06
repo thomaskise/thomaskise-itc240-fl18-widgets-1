@@ -50,7 +50,7 @@
         </div>
       </div>
     </nav>
-    <header class="masthead" style="background-image: url('<?=$config->theme_virtual?>img/<?=$config->pageImage?>')">
+    <header class="masthead" style="background-image: url('<?=$config->theme_virtual?>img/<?=$config->pageImage2?>')">
       <div class="overlay">
         <div class="container">
           <div class="row">

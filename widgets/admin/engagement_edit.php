@@ -93,7 +93,7 @@ function selectAdmin($nav1='')
 		     		<input type="radio" required name="EngagementID" value="' . (int)$row['EngagementID'] . '">' . 
 		     		(int)$row['EngagementID'] . '</td>
 		     	<td>' . dbOut($row['OrganizationName']) . '</td>
-                <td>' . dbOut($row['ContactFirstName']) . dbOut($row['ContactLastName']) . '</td>
+                <td>' . dbOut($row['ContactFirstName']) . ' ' . dbOut($row['ContactLastName']) . '</td>
 		     	<td>' . dbOut($row['ContactEmailAddress']) . '</td>
 		     	<td>' . dbOut($row['TrainingSiteName']) . '</td>
 		     	<td>' . dbOut($row['PreferredTrainingDate']) . '</td>

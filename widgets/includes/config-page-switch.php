@@ -7,6 +7,7 @@ case "index.php":
         $config->slogan="An adventure in caffinated experience";
         $config->title="Wild Duck Home";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="wildDuckLogo.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -18,6 +19,7 @@ case "about.php":
         $config->slogan="This is what we do.";
         $config->title="About Wild Duck";
         $config->pageImage="about-bg.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -29,6 +31,7 @@ case "engagement_list.php":
         $config->slogan="Here is the list of our followers!";
         $config->title="Engagements";
         $config->pageImage="post-bg.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="";
         $config->randomSH="y";
         $config->rotatePlanets="";
@@ -40,6 +43,7 @@ case "engagement_list_alpha.php":
         $config->slogan="Future engagement with image thumbs";
         $config->title="Engagements";
         $config->pageImage="post-bg.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="";
         $config->randomSH="y";
         $config->rotatePlanets="";
@@ -51,6 +55,7 @@ case "engagement_view.php":
         $config->slogan=" Here are details ...";
         $config->title="Engagement Detail";
         $config->pageImage="post-bg.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="y";
@@ -63,6 +68,7 @@ case "engagement_view_alpha.php":
         $config->slogan="Future engagement view with image upload";
         $config->title="Engagement Detail";
         $config->pageImage="post-bg.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="y";
@@ -75,6 +81,7 @@ case "post.php":
         $config->slogan=" Coffee to the max expands all horizons!";
         $config->title="The Coffee Blog";
         $config->pageImage="post-bg.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="";
         $config->randomSH="y";
         $config->rotatePlanets="";
@@ -86,6 +93,7 @@ case "dailyspecials.php":
         $config->slogan=" Take time to enjoy and treat yourself!";
         $config->title="Daily Specials";
         $config->pageImage="specials-bg.jpg";
+        $config->pageImage2="slide-2.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -97,6 +105,7 @@ case "travel.php":
         $config->slogan="Exotic Coffee Lands";
         $config->title="Travel Inquiries";
         $config->pageImage="travel.jpg";
+        $config->pageImage2="slide-3.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -108,6 +117,7 @@ case "contact.php":
         $config->slogan="Have questions? I have answers.";
         $config->title="Contact Wild Duck";
         $config->pageImage="contact-bg.jpg";
+        $config->pageImage2="slide-1.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -119,6 +129,7 @@ case "template.php":
         $config->slogan="Make it what it needs to be.";
         $config->title="Template Only";
         $config->pageImage="contact-bg.jpg";
+        $config->pageImage2="slide-1.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="y";
@@ -130,6 +141,7 @@ case "db_test.php":
         $config->slogan="Use this page for testing the db";
         $config->title="Template Only";
         $config->pageImage="contact-bg.jpg";
+        $config->pageImage2="slide-1.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="y";
         $config->rotatePlanets="";
@@ -141,6 +153,7 @@ case "admin_dashboard.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Admin Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -152,6 +165,7 @@ case "admin_add.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Admin Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -163,6 +177,7 @@ case "admin_reset.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Admin Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -174,6 +189,7 @@ case "admin_edit.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Admin Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -185,6 +201,7 @@ case "admin_delete.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Admin Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -196,6 +213,7 @@ case "engagement_add.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Engagement Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -207,6 +225,7 @@ case "engagement_edit.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Engagement Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -218,6 +237,7 @@ case "engagement_delete.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Engagement Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -229,6 +249,7 @@ case "engagement_dashboard.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Engagement Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -240,6 +261,7 @@ case "admin_login.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Admin Dashboard";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -252,6 +274,7 @@ case "upload_form.php":
         $config->slogan="Keeping things up-to-date";
         $config->title="Image Upload";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="Go for it!";
         $config->randomSH="";
         $config->rotatePlanets="";
@@ -263,6 +286,7 @@ default:
         $config->slogan="Try again or call Customer Service at 1-800-555-1212";
         $config->title="THIS_PAGE";
         $config->pageImage="wildDuckLogo.jpg";
+        $config->pageImage2="intro-pic.jpg";
         $config->subHeader="";
         $config->randomSH="";
         $config->rotatePlanets="";

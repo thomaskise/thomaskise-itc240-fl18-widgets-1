@@ -18,8 +18,21 @@
 
 require 'includes/config.php'; #provides configuration, pathing, error handling, db credentials 
 require 'includes/Pager.php'; #allows pagination 
+
+//for this page we'll request no caching to see the latest image
+
+if(isset($_SESSION["AdminID"]))
+{//don't cache uploaded images
+    $config->loadhead .='
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    ';
+    
+}
+
 # SQL statement
-$sql = "select * from engagements";
+$sql = "select * from " . PREFIX . "engagements";
 
 #Fills <title> tag  
 $config->title = 'Engagement List Pager';
@@ -59,7 +72,7 @@ if(mysqli_num_rows($result) > 0)
 	while($row = mysqli_fetch_assoc($result))
 	{# process each row
          echo '<p align="left">' .
-            '<img src="uploads/engagement' . (int)$row['EngagementID'] . 'list' . '.png" />' . ' ' .
+            '<img src="uploads/engagement' . (int)$row['EngagementID'] . '_thumb' . '.jpg" />' . ' ' .
             '<a href="engagement_view.php?id=' . (int)$row['EngagementID'] . '">' . $row['OrganizationName'] . '</a>
             </p>';
 	}
