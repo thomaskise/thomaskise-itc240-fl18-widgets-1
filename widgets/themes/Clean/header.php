@@ -45,7 +45,6 @@
         </div>
       </div>
     </nav>
-
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('<?=$config->theme_virtual?>img/<?=$config->pageImage?>')">
       <div class="overlay"></div>

@@ -556,16 +556,16 @@ function makeLinks($nav1)
         global $config;
         $myReturn = '';
         foreach($nav1 as $key => $value){
-            
-            $key = $config->virtual_path . $key; //add virtual path
             if(THIS_PAGE==$key)
             {//current page add active class
+                $key = $config->virtual_path . $key; 
                 $myReturn .= ' 
                 <li class="nav-item">
                     <a class="nav-link active" href="'. $key . '">' . $value . '</a>
                 </li>';  
                 
             }else{//add no formating
+                $key = $config->virtual_path . $key; 
                 $myReturn .= ' 
                 <li class="nav-item">
                     <a class="nav-link" href="' . $key . '">' . $value . '</a>
@@ -585,17 +585,17 @@ function bc_links($nav1){
     global $config;
     $myReturn = '';
     foreach($nav1 as $url => $text){
-        
-        $url = $config->virtual_path . $url; //add virtual path
         if(THIS_PAGE == $url)
         {//current page - add highlight
-              $myReturn .= '
+            $url = $config->virtual_path . $url; //add virtual path  
+            $myReturn .= '
             <li class="nav-item active px-lg-4">
                 <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
             </li>
             '; 
         }else{//no highlight
-             $myReturn .= '
+            $url = $config->virtual_path . $url; //add virtual path 
+            $myReturn .= '
             <li class="nav-item px-lg-4">
                 <a class="nav-link text-uppercase text-expanded" href="' . $url . '">' . $text . '</a>
             </li>
