@@ -17,7 +17,7 @@
  */
 
 require '../includes/config.php'; #provides configuration, pathing, error handling, db credentials
-$titleTag = 'Edit or Delete Administrator'; #Fills <title> tag. If left empty will fallback to $titleTag in config_inc.php
+$titleTag = 'Delete Administrator'; #Fills <title> tag. If left empty will fallback to $titleTag in config_inc.php
 $metaRobots = 'no index, no follow';#never index admin pages  
 
 //END CONFIG AREA ----------------------------------------------------------
@@ -32,8 +32,8 @@ switch ($config->myAction)
 	case "edit": # 2) show form to edit data
 	 	editDisplay($config->nav1);
 	 	break;
-	case "update": # 3) execute update SQL, redirect
-		updateExecute($config->nav1);
+	case "delete": # 3) execute delete SQL, redirect
+		deleteExecute($config->nav1);
 		break; 
 	default: # 1)Select Administrator
 	 	selectAdmin($config->nav1);
@@ -58,7 +58,7 @@ function selectAdmin($nav1='')
 	</script>
 	';
 	get_header();
-	echo '<h1>Edit Administrator Data</h1>';
+	echo '<h1>Delete Administrator Data</h1>';
 	if($_SESSION["Privilege"] == "developer" || $_SESSION["Privilege"] == "superadmin")
 	{# must be greater than admin level to have  choice of selection
 		echo '<p align="center">Select an Administrator, to edit their data:</p>';
@@ -158,56 +158,48 @@ function editDisplay($nav1='')
 	';
 	get_header();
 	echo '
-	<h1>Edit Administrator</h1>
+	<h1>Delete Administrator</h1>
 	<form action="' . ADMIN_PATH .  THIS_PAGE . '" method="post" onsubmit="return checkForm(this);">
 	<table align="center">
 		<tr>
 			<td align="right">First Name</td>
 			<td>
-				<input type="text" autofocus required name="FirstName" value="' . $FirstName . '" />
-				<font color="red"><b>*</b></font>
+				<input type="text" autofocus required name="FirstName" value="' . $FirstName . '" readonly/>
+				<font color="red"></font>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">Last Name</td>
 			<td>
-				<input type="text" required name="LastName" value="' . $LastName . '" />
-				<font color="red"><b>*</b></font>
+				<input type="text" required name="LastName" value="' . $LastName . '" readonly/>
+				<font color="red"></font>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">Email</td>
 			<td>
-				<input type="email" required name="Email" value="' . $Email . '" />
-				<font color="red"><b>*</b></font>
+				<input type="email" required name="Email" value="' . $Email . '" readonly/>
+				<font color="red"></font>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">Privilege</td>
+			<td>
+				<input type="email" required name="Privilege" value="' . $_SESSION["Privilege"] . '" readonly/>
+				<font color="red"></font>
 			</td>
 		</tr>
 	';
-		if($_SESSION["Privilege"] == "developer" || $_SESSION["Privilege"] == "superadmin")
-		{# uses returnSelect() function to preload the select option
-			echo '
-			<tr>
-				<td align="right">Privilege</td>
-				<td>
-				';
-				#creates preloaded radio, select, checkbox set
-            $privileges = getENUM(PREFIX . 'Admin','Privilege',$iConn); #grab all possible 'Privileges' from ENUM
-			echo returnSelect("select","Privilege",$privileges,"",$privileges,",");	
-				echo '
-				</td>
-			</tr>';
-		}else{
-			echo '<input type="hidden" name="Privilege" value="' . $_SESSION["Privilege"] . '" />';
-		}	
-	echo '
-	   <input type="hidden" name="AdminID" value="' , $myID . '" />
-	   <input type="hidden" name="act" value="update" />
-	   <tr>
+    echo '
+       <input type="hidden" name="AdminID" value="' , $myID . '" />
+	   <input type="hidden" name="act" value="delete" />
+	   <tr></tr>
+       <tr>
 			<td align="center" colspan="2">
-				<input type="submit" value="Update Admin" />
-				<em>(<font color="red"><b>*</b> required field</font>)</em>
+				<input type="submit" value="Delete Admin" />
+				<em>(<font color="red"><b> This is Permanent!</b></font>)</em>
 			</td>
-       </tr>
+		</tr>
 	</table>    
 	</form>
 	<p align="center"><a href="' . ADMIN_PATH . 'admin_dashboard.php">Exit To Admin</a></p>
@@ -217,21 +209,11 @@ function editDisplay($nav1='')
 	get_footer();
 }
 
-function updateExecute($nav1='')
+function deleteExecute($nav1='')
 {
-
 	$iConn = @mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) or die(myerror(__FILE__,__LINE__,mysqli_connect_error()));
 
-    
-     $params = array('FirstName','LastName','AdminID','Email','Privilege');#required fields
-    if(!required_params($params))
-    {//abort - required fields not sent
-        feedback("Data not entered/updated. (error code #" . createErrorCode(THIS_PAGE,__LINE__) . ")","error");
-        header('Location:' . ADMIN_PATH . THIS_PAGE);
-        die;	    
-    }
-    
-	if(isset($_POST['AdminID']) && (int)$_POST['AdminID'] > 0)
+  	if(isset($_POST['AdminID']) && (int)$_POST['AdminID'] > 0)
 	{
 	 	$AdminID = (int)$_POST['AdminID']; #Convert to integer, will equate to zero if fails
 	}else{
@@ -239,26 +221,10 @@ function updateExecute($nav1='')
 		header('Location:' . ADMIN_PATH . THIS_PAGE);
         die;
 	}
-    
-	$FirstName = dbIn($_POST['FirstName'],$iConn);
-    $LastName = dbIn($_POST['LastName'],$iConn);
-	$Email = strtolower(dbIn($_POST['Email'],$iConn));
-	$Privilege = dbIn($_POST['Privilege'],$iConn);
-
-	
-	#check for duplicate email
-	$sql = sprintf("select AdminID from " . PREFIX . "Admin WHERE (Email='%s') and AdminID != %d",$Email,$AdminID);
-	$result = mysqli_query($iConn,$sql) or die(myerror(__FILE__,__LINE__,mysqli_error($iConn)));
-	if(mysqli_num_rows($result) > 0)//at least one record!
-	{# someone already has email!
-		feedback("Email already exists - please choose a different email.");
-		header('Location:' . ADMIN_PATH . THIS_PAGE);
-        die;
-	}
 
 	#sprintf() function allows us to filter data by type while inserting DB values.  Illegal data is neutralized, ie: numerics become zero
-	$sql = sprintf("UPDATE " . PREFIX . "Admin set FirstName='%s',LastName='%s',Email='%s',Privilege='%s' WHERE AdminID=%d",$FirstName,$LastName,$Email,$Privilege,$AdminID);
-  
+    $sql = sprintf("DELETE FROM " . PREFIX . "Admin WHERE (AdminID=%d)",$AdminID);
+    
     @mysqli_query($iConn,$sql) or die(myerror(__FILE__,__LINE__,mysqli_error($iConn)));
 	
 	//feedback success or failure of insert
@@ -275,8 +241,8 @@ function updateExecute($nav1='')
 	
 	get_header();
 	echo '
-		<h1>Edit Administrator</h1>
-		<p align="center"><a href="' . ADMIN_PATH .  THIS_PAGE . '">Edit More</a></p>
+		<h1>Delete Administrator</h1>
+		<p align="center"><a href="' . ADMIN_PATH .  THIS_PAGE . '">Delete More</a></p>
 		<p align="center"><a href="' . ADMIN_PATH . 'admin_dashboard.php">Exit To Admin</a></p>
 		';	
 	get_footer();

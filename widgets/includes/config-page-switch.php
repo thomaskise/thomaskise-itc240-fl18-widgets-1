@@ -180,6 +180,17 @@ case "admin_edit.php":
         $config->version="";
         break;
 
+case "admin_delete.php":
+        $config->pageHeader="Admin Dashboard";
+        $config->slogan="Keeping things up-to-date";
+        $config->title="Admin Dashboard";
+        $config->pageImage="wildDuckLogo.jpg";
+        $config->subHeader="Go for it!";
+        $config->randomSH="";
+        $config->rotatePlanets="";
+        $config->version="";
+        break;
+
 
 case "admin_login.php":
         $config->pageHeader="Admin Dashboard";

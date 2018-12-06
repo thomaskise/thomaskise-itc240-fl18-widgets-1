@@ -45,6 +45,10 @@ get_header(); #header must appear before any HTML is printed by PHP
 			<td>Edit Admin data such as first, last & email here.  SuperAdmins can edit the Privilege levels of others.</td>
 	</tr>
 	<tr>
+			<td width="250" align="center"><a href="<?=ADMIN_PATH?>admin_delete.php">Delete Administrator Data</a></td>
+			<td>Delete an Admin here.  SuperAdmins can delete others. Be careful - this beta version will let you delete yourself!</td>
+	</tr>
+	<tr>
         <td align="center" colspan="2"><b><?=$_SESSION['FirstName']?></b> is currently logged in as <b><?=$_SESSION['Privilege']?></b> <a href="<?=ADMIN_PATH?>admin_logout.php" title="Don't forget to Logout!">Logout</a></td>
 	</tr>
 </table>
