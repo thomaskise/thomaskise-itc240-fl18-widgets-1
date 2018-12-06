@@ -86,6 +86,7 @@ if(startSession() && isset($_SESSION['AdminID']))
     
     $config->adminWidget = '
         <a href="' . ADMIN_PATH . 'admin_dashboard.php">ADMIN</a> 
+        <a href="' . ADMIN_PATH . 'engagement_dashboard.php">ENGAGEMENT</a> 
         <a href="' . ADMIN_PATH . 'admin_logout.php">LOGOUT</a>
     ';
 }else{//show login (YOU MAY WANT TO SET TO EMPTY STRING FOR SECURITY)

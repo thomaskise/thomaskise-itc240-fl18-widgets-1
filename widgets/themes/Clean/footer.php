@@ -36,7 +36,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018 <?=$config->adminWidget;?></p>
+            <p class="copyright text-muted">Copyright &copy; Your Website 2018 <?=$config->adminWidget;?><?=$config->engageWidget;?></p>
           </div>
         </div>
       </div>

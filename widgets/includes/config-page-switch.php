@@ -190,8 +190,51 @@ case "admin_delete.php":
         $config->rotatePlanets="";
         $config->version="";
         break;
+        
+case "engagement_add.php":
+        $config->pageHeader="Engagement Dashboard";
+        $config->slogan="Keeping things up-to-date";
+        $config->title="Engagement Dashboard";
+        $config->pageImage="wildDuckLogo.jpg";
+        $config->subHeader="Go for it!";
+        $config->randomSH="";
+        $config->rotatePlanets="";
+        $config->version="";
+        break; 
 
+case "engagement_edit.php":
+        $config->pageHeader="Engagement Dashboard";
+        $config->slogan="Keeping things up-to-date";
+        $config->title="Engagement Dashboard";
+        $config->pageImage="wildDuckLogo.jpg";
+        $config->subHeader="Go for it!";
+        $config->randomSH="";
+        $config->rotatePlanets="";
+        $config->version="";
+        break;
 
+case "engagement_delete.php":
+        $config->pageHeader="Engagement Dashboard";
+        $config->slogan="Keeping things up-to-date";
+        $config->title="Engagement Dashboard";
+        $config->pageImage="wildDuckLogo.jpg";
+        $config->subHeader="Go for it!";
+        $config->randomSH="";
+        $config->rotatePlanets="";
+        $config->version="";
+        break;
+
+case "engagement_dashboard.php":
+        $config->pageHeader="Engagement Dashboard";
+        $config->slogan="Keeping things up-to-date";
+        $config->title="Engagement Dashboard";
+        $config->pageImage="wildDuckLogo.jpg";
+        $config->subHeader="Go for it!";
+        $config->randomSH="";
+        $config->rotatePlanets="";
+        $config->version="";
+        break;
+        
 case "admin_login.php":
         $config->pageHeader="Admin Dashboard";
         $config->slogan="Keeping things up-to-date";
