@@ -29,17 +29,12 @@ $config = new stdClass;
 //CHANGE TO MATCH YOUR PAGES
 $config->nav1['index.php'] = "Home";
 $config->nav1['engagement_list.php']= 'Engagements';
+$config->nav1['engagement_list_alpha.php']= 'Engagements Alpha';
 $config->nav1['dailyspecials.php']= 'Daily Specials';
 $config->nav1['travel.php']= 'Travel Inquiry';
 $config->nav1['contact.php']= 'General Inquiry';
 $config->nav1['template.php']= 'Template';
 $config->nav1['db_test.php']= 'DB Template';
-
-//set-up heros
-    include 'includes/heros.php';
-
-//set-up planets
-    include 'includes/planets.php';
 
 //create default page identifier
 define('THIS_PAGE',basename($_SERVER['PHP_SELF']));
@@ -58,11 +53,16 @@ if (SECURE && $_SERVER['SERVER_PORT'] != 443) {#force HTTPS
     $protocol = (SECURE==true ? 'https://' : 'http://'); // returns true
     
 }
+$virtual_path = $protocol . $_SERVER["HTTP_HOST"] . '/' . $sub_folder;
 $config->virtual_path = $protocol . $_SERVER["HTTP_HOST"] . '/' . $sub_folder;
 
 define('ADMIN_PATH', $config->virtual_path . 'admin/'); # Could change to sub folder
 define('INCLUDE_PATH', $config->physical_path . 'includes/');
 
+//set-up heros
+    include (INCLUDE_PATH."heros.php");
+//set-up planets
+    include (INCLUDE_PATH."planets.php");
 
 //CHANGE ITEMS BELOW TO MATCH YOUR SHORT TAGS
 $config->banner = 'Widgets';
