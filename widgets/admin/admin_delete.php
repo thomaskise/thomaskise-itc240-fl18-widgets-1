@@ -190,6 +190,22 @@ function editDisplay($nav1='')
 			</td>
 		</tr>
 	';
+	/*	if($_SESSION["Privilege"] == "developer" || $_SESSION["Privilege"] == "superadmin")
+		{# uses returnSelect() function to preload the select option
+			echo '
+			<tr>
+				<td align="right">Privilege</td>
+				<td>
+				';
+				#creates preloaded radio, select, checkbox set
+            $privileges = getENUM(PREFIX . 'Admin','Privilege',$iConn); #grab all possible 'Privileges' from ENUM
+			echo returnSelect("select","Privilege",$privileges,"",$privileges,",");	
+				echo '
+				</td>
+			</tr>';
+		}else{
+			echo '<input type="hidden" name="Privilege" value="' . $_SESSION["Privilege"] . '" readonly/>';
+		}	*/
     echo '
        <input type="hidden" name="AdminID" value="' , $myID . '" />
 	   <input type="hidden" name="act" value="delete" />
