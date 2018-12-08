@@ -30,22 +30,22 @@ get_header(); #header must appear before any HTML is printed by PHP
 	}
 	if($_SESSION['Privilege']=="superadmin" || $_SESSION['Privilege']=="developer"){ ?>
 		<tr>
-			<td width="250" align="center"><a href="<?=ADMIN_PATH?>engagement_add.php">Add Engagements</a></td>
-			<td><b>SuperAdmin Only.</b> Add a new Engagement.</td>
+			<td width="250" align="center"><a href="<?=ADMIN_PATH?>engagement_add.php">Add an Engagement</a></td>
+			<td>Enter a new Engagement.</td>
 		</tr>
 	<?php
 	}
 	?>
 		<tr>
-			<td width="250" align="center"><a href="<?=ADMIN_PATH?>engagement_edit.php">Update Engagements</a></td>
-			<td>Edit Engagement data such as first, last, date, & email here.</td>
+			<td width="250" align="center"><a href="../engagement_list.php">Update an Engagement</a></td>
+			<td>Update the date, location, contact, trainer, or other  Engagement information.</td>
 	</tr>
 	<tr>
-			<td width="250" align="center"><a href="<?=ADMIN_PATH?>engagement_delete.php">Delete Engagements</a></td>
-			<td>Delete an Engagement here.  SuperAdmins can delete Engagements.</td>
+			<td width="250" align="center"><a href="<?=ADMIN_PATH?>engagement_delete.php">Delete an Engagement</a></td>
+			<td>Review the list of Engagements and select the one you want to delete.</td>
 	</tr>
 	<tr>
-        <td align="center" colspan="2"><b><?=$_SESSION['FirstName']?></b> is currently logged in as <b><?=$_SESSION['Privilege']?></b> <a href="<?=ADMIN_PATH?>admin_logout.php" title="Don't forget to Logout!">Logout</a></td>
+        <td align="center" colspan="2"><b><?=$_SESSION['FirstName']?></b> is currently logged in as <b><?=$_SESSION['Privilege']?></b> <a href="<?=ADMIN_PATH?>admin_logout.php" title="Don't forget to Logout!"> - Logout</a></td>
 	</tr>
 	<tr>
         <td align="center" colspan="2"><b><a href="<?=ADMIN_PATH?>admin_dashboard.php">Toggle to the Admin Dashboard</a></b></td>

@@ -7,12 +7,13 @@ if(isset($_GET['id']))
     //cast the data to an integer, for security purposes
     $id = (int)$_GET['id'];
 }else{//redirect to safe page
-    header('Location:engagement_list.php');
+    header('Location:ngagement_list.php');
 }
 
 //for this page we'll request no caching to see the latest image
 if(isset($_SESSION["AdminID"]))
 {//don't cache uploaded images
+    $_SESSION['EngagementID'] = (int)$_GET['id'];
     $config->loadhead .='
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="-1">
@@ -79,7 +80,7 @@ if($Feedback == '')
 
 if(startSession() && isset($_SESSION["AdminID"]))
     {# only admins can see 'peek a boo' link:
-        echo '<p align="center"><a href="' . $config->virtual_path . '/upload_form.php?' . $_SERVER['QUERY_STRING'] . '">UPLOAD IMAGE</a></p>';
+        echo '<p align="center"><a href="' . $config->virtual_path . '/upload_form.php?' . $_SERVER['QUERY_STRING'] . '">Change or Add Image</a></p>';
         /*
         # if you wish to overwrite any of these options on the view page, 
         # you may uncomment this area, and provide different parameters:						
@@ -92,12 +93,14 @@ if(startSession() && isset($_SESSION["AdminID"]))
         echo '&thumbSuffix=_thumb';
         echo '&sizeBytes=100000';
         echo '">UPLOAD IMAGE</a></div>';
-        */						
-
+        */
+        echo '<p align="center"><a href="' . $config->virtual_path . 'admin/engagement_edit.php?' . $_SERVER['QUERY_STRING'] . '">Update Engagement information</a></p>';
+        echo '<p align="center"><a href="' . ADMIN_PATH . 'engagement_dashboard.php">Return To Engagement Dashboard</a></p>
+		';	
     }
 
 
-    echo '<p><a href="engagement_list.php">Go Back</a></p>';
+    echo '<p><a href="engagement_list.php">Return to Engagement List</a></p>';
 
 //release web server resources
 @mysqli_free_result($result);

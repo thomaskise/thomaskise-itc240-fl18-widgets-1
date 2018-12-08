@@ -29,103 +29,19 @@ include_once INCLUDE_PATH . 'admin_only_inc.php'; #session protected page - leve
 if(isset($_REQUEST['act'])){$config->myAction = (trim($_REQUEST['act']));}else{$config->myAction = "";}
 switch ($config->myAction) 
 {//check for type of process
-	case "edit": # 2) show form to edit data
-	 	editDisplay($config->nav1);
-	 	break;
 	case "update": # 3) execute update SQL, redirect
 		updateExecute($config->nav1);
 		break; 
 	default: # 1)Select Administrator
-	 	selectAdmin($config->nav1);
-}
-
-function selectAdmin($nav1='')
-{//Select administrator
-	if($_SESSION["Privilege"] == "admin")
-	{#redirect if logged in only as admin
-		header('Location:' . ADMIN_PATH . THIS_PAGE . "?act=edit");
-        die; 
-	}
-	
-	$loadhead='
-	<script type="text/javascript" src="' . INCLUDE_PATH . 'include/util.js"></script>
-	<script type="text/javascript">
-			function checkForm(thisForm)
-			{//check form data for valid info
-				if(empty(thisForm.AdminID,"Please Select an Administrator.")){return false;}
-				return true;//if all is passed, submit!
-			}
-	</script>
-	';
-	get_header();
-	echo '<h1>Edit Engagement Data</h1>';
-	if($_SESSION["Privilege"] == "developer" || $_SESSION["Privilege"] == "superadmin")
-	{# must be greater than admin level to have  choice of selection
-		echo '<p align="center">Select an Engagement, to edit it:</p>';
-	}
-	$iConn = @mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) or die(myerror(__FILE__,__LINE__,mysqli_connect_error()));
-    $sql = "select EngagementID,OrganizationName,ContactLastName,ContactFirstName,ContactEmailAddress,TrainingSiteName,TrainingSiteAddress1,TrainingSiteCity,TrainingSiteStateCode,TrainingZip,PreferredTrainingDate,Trainer from " . PREFIX . "engagements";
-	if($_SESSION["Privilege"] != "developer" && $_SESSION["Privilege"] != "superadmin")
-	{# limit access to the individual, if not developer level
-		$sql .= " where EngagementID=" . $_SESSION["EngagementID"];
-	}
-	$result = mysqli_query($iConn,$sql) or die(myerror(__FILE__,__LINE__,mysqli_error($iConn)));
-	if (mysqli_num_rows($result) > 0)//at least one record!
-	{//show results
-		echo '
-		<form action="' . ADMIN_PATH .  THIS_PAGE . '" method="post" onsubmit="return checkForm(this);">
-		<table align="center" border="1" style="border-collapse:collapse" cellpadding="3" cellspacing="3">
-		<tr>
-            <th>EngagementID</th>
-            <th>Organization</th>
-            <th>Contact</th>
-            <th>Email</th>
-            <th>Site</th>
-            <th>Date</th>
-            <th>Trainer</th>
-        </tr>
-		';
-		while ($row = mysqli_fetch_array($result))
-		{//dbOut() function is a 'wrapper' designed to strip slashes, etc. of data leaving db
-		     echo '
-		     <tr>
-		     	<td>
-		     		<input type="radio" required name="EngagementID" value="' . (int)$row['EngagementID'] . '">' . 
-		     		(int)$row['EngagementID'] . '</td>
-		     	<td>' . dbOut($row['OrganizationName']) . '</td>
-                <td>' . dbOut($row['ContactFirstName']) . ' ' . dbOut($row['ContactLastName']) . '</td>
-		     	<td>' . dbOut($row['ContactEmailAddress']) . '</td>
-		     	<td>' . dbOut($row['TrainingSiteName']) . '</td>
-		     	<td>' . dbOut($row['PreferredTrainingDate']) . '</td>
-		     	<td>' . dbOut($row['Trainer']) . '</td>
-		     </tr>
-		     ';
-		}
-		echo '
-			<input type="hidden" name="act" value="edit" />
-			<tr>
-				<td align="center" colspan="7">
-					<input type="submit" value="Choose Engagement!" />
-				</td>
-			</tr>
-		</table>
-		</form>
-		';	
-	}else{//no records
-      echo '<p align="center"><h3>Currently No Engagements in Database.</h3></p>';
-	}
-	 echo '<p align="center"><a href="' . ADMIN_PATH . 'engagement_dashboard.php">Exit To Engagement</a></p>';
-	@mysqli_free_result($result);
-    @mysqli_close($iConn);
-	get_footer();
-
+	 	editDisplay($config->nav1);
+//        selectAdmin($config->nav1);
 }
 
 function editDisplay($nav1='')
 {
-    if(isset($_POST['EngagementID']) && (int)$_POST['EngagementID'] > 0)
+    if(isset($_SESSION['EngagementID']) && (int)$_SESSION['EngagementID'] > 0)
     {
-        $myID = (int)$_POST['EngagementID']; #Convert to integer, will equate to zero if fails
+        $myID = (int)$_SESSION['EngagementID']; #Convert to integer, will equate to zero if fails
     }else{
         header('Location:' . ADMIN_PATH . THIS_PAGE);
         die;
@@ -335,13 +251,6 @@ function updateExecute($nav1='')
 	}else{
 	 	feedback("Data NOT Updated! (or not changed from original values)");
 	}
-	
-	get_header();
-	echo '
-		<h1>Edit Engagement</h1>
-		<p align="center"><a href="' . ADMIN_PATH .  THIS_PAGE . '">Edit More</a></p>
-		<p align="center"><a href="' . ADMIN_PATH . 'engagement_dashboard.php">Exit To Engagement</a></p>
-		';	
-	get_footer();
-   
+	header('Location:../engagement_view.php?id=' . $_SESSION['EngagementID']);
+
 }
