@@ -8,16 +8,11 @@ ContactFirstName VARCHAR(50),
 ContactEmailAddress VARCHAR(50),
 TrainingSiteName VARCHAR(50),
 TrainingSiteAddress1 VARCHAR(50),
+TrainingSiteAdderess2 VARCHAR(50),
 TrainingSiteCity VARCHAR(50),
 TrainingSiteStateCode CHAR(2),
-TrainingZip INT(5),
+TrainingZip TINYINT(5),
 PreferredTrainingDate DATE,
-Trainer TEXT
-);
-
-
-// Future fields:
-TrainingSiteAdderess2 VARCHAR(50),
 TrainingFocus TINYTEXT,
 ExpectedParticipation TINYINT(4),
 CurrentLgbtqUnderstanding TINYTEXT,

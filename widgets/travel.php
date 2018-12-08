@@ -19,6 +19,50 @@
             'Reply-To: ' . $replyTo . PHP_EOL .
             'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $message, $headers);
+        
+        //START CODE TO ADD TO CONTACT PAGE!-----------------
+
+        //connect to the database in order to add contact data
+        $iConn = @mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) or die(myerror(__FILE__,__LINE__,mysqli_connect_error()));
+
+        //process each post var, adding slashes, using mysqli_real_escape(), etc.
+        $FirstName = dbIn($_POST['FirstName'],$iConn);
+        $LastName = dbIn($_POST['LastName'],$iConn);
+        $Email = dbIn($_POST['Email'],$iConn);
+        $Family = dbIn($_POST['Family'],$iConn);
+        $Epicurean = dbIn($_POST['Epicurean'],$iConn);
+        $Coffee = dbIn($_POST['Coffee'],$iConn);
+        $Message = dbIn($_POST['Message'],$iConn);
+        $ContactPreference = dbIn($_POST['ContactPreference'],$iConn);
+
+        //place question marks in place of each item to be inserted
+        $sql = "INSERT INTO widgets_fl18_Contacts (FirstName,LastName,Email,Family,Epicurean,Coffee,Message,ContactPreference,DateAdded) VALUES(?,?,?,?,?,?,?,?,NOW())";
+        $stmt = @mysqli_prepare($iConn,$sql) or die(myerror(__FILE__,__LINE__,mysqli_error($iConn)));
+
+        /*
+         * second parameter of the mysqli_stmt_bind_param below 
+         * identifies each data type inserted: 
+         *
+         * i == integer
+         * d == double (floating point)
+         * s == string
+         * b == blob (file/image)
+         *
+         *example: an integer, 2 strings, then a double would be: "issd"
+         */
+
+        mysqli_stmt_bind_param($stmt, 'sssiiiss',$FirstName,$LastName,$Email,$Family,$Epicurean,$Coffee,$Message,$ContactPreference);
+
+        //execute sql command
+        mysqli_stmt_execute($stmt) or die();
+
+        //close statement
+        @mysqli_stmt_close($stmt);
+
+        //close connection
+        @mysqli_close($iConn);
+
+    //END CODE TO ADD TO CONTACT PAGE!-----------------
         echo '<p>Thanks for getting in touch!</p>
               <p><a href="">BACK</a></p>';
         
@@ -50,18 +94,18 @@
                           <div class="container"> 
                               <label>What interests you?</label>
                                 <div class="form-check">
-                                    <input type="hidden" name="Vacation" value="Not selected">
-                                    <input class="form-check-label" type="checkbox" name="Vacation" id="Family" value="family">
+                                    <input type="hidden" name="Family" value="0">
+                                    <input class="form-check-label" type="checkbox" name="Family" id="Family" value="1">
                                     Fabulous family vacation!<br />
                                 </div>
                                 <div class="form-check">
-                                    <input type="hidden" name="Food" value="Not selected">
-                                    <input class="form-check-label" type="checkbox" name="Food" id="Food" value="food">
+                                    <input type="hidden" name="Epicurean" value="0">
+                                    <input class="form-check-label" type="checkbox" name="Epicurean" id="Food" value="1">
                                     Outstanding epicurean experiences!<br />
                                 </div>
                                 <div class="form-check">
-                                    <input type="hidden" name="Coffee" value="Not selected">
-                                    <input class="form-check-label" type="checkbox" name="Coffee" id="Coffee" value="coffee">
+                                    <input type="hidden" name="Coffee" value="0">
+                                    <input class="form-check-label" type="checkbox" name="Coffee" id="Coffee" value="1">
                                     Coffee! Coffee! Coffee!<br />
                                 </div>
                             </div>
@@ -75,11 +119,11 @@
                         </div>
                         <div class="form-check">
                               <label>How do you prefer to be contacted?</label><br />
-                              <input class="form-check-label" type="radio" name="ContactPreference" id="interest1" value="call" checked>
+                              <input class="form-check-label" type="radio" name="ContactPreference" id="interest1" value="phone" checked>
                                     Call me!<br />
                         </div>
                         <div class="form-check">
-                              <input class="form-check-label" type="radio" name="ContactPreference" id="exampleRadios2" value="email info">
+                              <input class="form-check-label" type="radio" name="ContactPreference" id="exampleRadios2" value="email">
                                     Email me the information.
                                <br /><br />
                         </div>
