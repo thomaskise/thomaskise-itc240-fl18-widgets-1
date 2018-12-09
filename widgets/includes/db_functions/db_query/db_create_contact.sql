@@ -10,9 +10,6 @@ create table widgets_fl18_Contacts
 FirstName varchar(50),
 LastName varchar(50),
 Email varchar(80),
-Family tinyint(1),
-Epicurean tinyint(1),
-Coffee tinyint(1),
 ContactPreference varchar(5),
 Message text,
 DateAdded datetime

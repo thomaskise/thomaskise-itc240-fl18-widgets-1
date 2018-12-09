@@ -34,9 +34,12 @@
         $Coffee = dbIn($_POST['Coffee'],$iConn);
         $Message = dbIn($_POST['Message'],$iConn);
         $ContactPreference = dbIn($_POST['ContactPreference'],$iConn);
+        $SubscriptionInfo = array("Family Vacation"=>(INT)$Family, "Epicurean Adventure" => (INT)$Epicurean, "Coffee Travel"=> (INT)$Coffee);
+        $DateStopped = '9999-99-99';
 
+//Update Contacts
         //place question marks in place of each item to be inserted
-        $sql = "INSERT INTO widgets_fl18_Contacts (FirstName,LastName,Email,Family,Epicurean,Coffee,Message,ContactPreference,DateAdded) VALUES(?,?,?,?,?,?,?,?,NOW())";
+        $sql = "INSERT INTO widgets_fl18_Contacts (FirstName,LastName,Email,Message,ContactPreference,DateAdded) VALUES(?,?,?,?,?,NOW())";
         $stmt = @mysqli_prepare($iConn,$sql) or die(myerror(__FILE__,__LINE__,mysqli_error($iConn)));
 
         /*
@@ -51,19 +54,38 @@
          *example: an integer, 2 strings, then a double would be: "issd"
          */
 
-        mysqli_stmt_bind_param($stmt, 'sssiiiss',$FirstName,$LastName,$Email,$Family,$Epicurean,$Coffee,$Message,$ContactPreference);
+        mysqli_stmt_bind_param($stmt, 'sssss',$FirstName,$LastName,$Email,$Message,$ContactPreference);
 
         //execute sql command
         mysqli_stmt_execute($stmt) or die();
-
+        $ContactID = mysqli_insert_id($iConn);
+        
         //close statement
         @mysqli_stmt_close($stmt);
+
+//Update Subscriptions        
+        Foreach ($SubscriptionInfo as $key => $value)
+        { 
+            If ($value == 1)
+            {
+                $sql = "INSERT INTO widgets_fl18_Subscriptions (SubscriptionName,Subscribed,ContactID,DateStopped,DateStarted) VALUES(?,?,?,?,NOW())";
+                $stmt = @mysqli_prepare($iConn,$sql) or die(myerror(__FILE__,__LINE__,mysqli_error($iConn)));
+
+                mysqli_stmt_bind_param($stmt, 'siss',$key,$value,$ContactID,$DateStopped);
+
+                //execute sql command
+                mysqli_stmt_execute($stmt) or die();
+
+                //close statement
+                @mysqli_stmt_close($stmt);
+            }
+        }
 
         //close connection
         @mysqli_close($iConn);
 
     //END CODE TO ADD TO CONTACT PAGE!-----------------
-        echo '<p>Thanks for getting in touch!</p>
+        echo '<p>Thanks! We will be in touch!</p>
               <p><a href="">BACK</a></p>';
         
     }else{//show a form
