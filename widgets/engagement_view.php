@@ -7,7 +7,7 @@ if(isset($_GET['id']))
     //cast the data to an integer, for security purposes
     $id = (int)$_GET['id'];
 }else{//redirect to safe page
-    header('Location:ngagement_list.php');
+    header('Location:engagement_list.php');
 }
 
 //for this page we'll request no caching to see the latest image
@@ -22,7 +22,7 @@ if(isset($_SESSION["AdminID"]))
     
 }
 
-$sql = "select * from " . PREFIX . "engagements where EngagementID = $id";
+$sql = "select * from " . PREFIX . "engagements where EngagementID =" . $id;
 
 //we extract the data here
 $result = mysqli_query($iConn,$sql);

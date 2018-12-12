@@ -4,12 +4,14 @@
 	for safe keeping!
 	11/22/2010
 */
-drop table if exists widgets_fl18_Subscriptions;
-create table widgets_fl18_Subscriptions
-(SubscriptionID int unsigned not null auto_increment PRIMARY KEY,
+drop table if exists test_Subscriptions;
+create table test_Subscriptions
+(SubscriptionID int unsigned not null auto_increment,
 SubscriptionName varchar(50),
 Subscribed tinyint(1),
-ContactID int,
+ContactID int(10),
 DateStarted datetime,
-DateStopped datetime
+DateStopped datetime,
+    PRIMARY KEY (SubscriptionID),
+    FOREIGN KEY (ContactID) REFERENCES test_Contacts(ContactID)
 );	
